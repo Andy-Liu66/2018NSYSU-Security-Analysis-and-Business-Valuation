@@ -9,7 +9,9 @@ class strategy:
         self.data_date = data_date
         self.first_date_each_year = first_date_each_year
 
-    def calculate_return(self, num_selected = 10, by = "MV", ascending = True, least_volume = 10, trade_mode = "A", weight_mode = "equal", initial_capital = 10000):
+    def calculate_return(self, num_selected = 10, by = "MV", ascending = True, 
+                         least_volume = 10, trade_mode = "A", weight_mode = "equal", 
+                         initial_capital = 10000, transaction_cost = 0.00585):
         #empty dataframe to collect final result
         self.selected_data = pd.DataFrame([])
         for i in range(len(self.first_date_each_year)):
@@ -85,7 +87,7 @@ class strategy:
             if weight_mode == "MV_based":
                 weight_array = np.array(temp.MV / temp.MV.sum())
             #calculate return for each company in the portfolio
-            temp_return =  ((temp.Close_out - temp.Close) / temp.Close + 1)
+            temp_return =  ((temp.Close_out - temp.Close) / temp.Close + 1 - transaction_cost)
             #allocation of capital, it will be rebalance year by year
             capital_allocation = self.initial_capital * weight_array
             #calculate remain capital year by year
