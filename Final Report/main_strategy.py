@@ -92,7 +92,8 @@ class strategy:
             capital_allocation = self.initial_capital * weight_array
             #calculate remain capital year by year
             self.initial_capital = np.dot(capital_allocation, temp_return)
-            
-        return self.initial_capital
+        #calculate total return
+        self_return = (self.initial_capital / initial_capital) -1
+        return [self.initial_capital, self_return]
 
 
