@@ -9,9 +9,9 @@ class strategy:
         self.data_date = data_date
         self.first_date_each_year = first_date_each_year
 
-    def calculate_return(self, num_selected = 10, by = "MV", ascending = True, 
-                         least_volume = 10, trade_mode = "A", weight_mode = "equal", 
-                         initial_capital = 10000, transaction_cost = 0.00585):
+    def calculate_return(self, num_selected = 10, by = "MV", 
+                         ascending = True, least_volume = 10, trade_mode = "A",
+                         weight_mode = "equal", initial_capital = 100, transaction_cost = 0.00585):
         #empty dataframe to collect final result
         self.selected_data = pd.DataFrame([])
         for i in range(len(self.first_date_each_year)):
