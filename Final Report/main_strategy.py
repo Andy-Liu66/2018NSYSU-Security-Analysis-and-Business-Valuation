@@ -84,7 +84,7 @@ class strategy:
             if weight_mode == "equal":
                 weight_array = np.array([1/len(temp)] * len(temp))
             #the weight of portfolio will be weighted according to companies' market value
-            if weight_mode == "MV_based":
+            if weight_mode == "MVbased":
                 weight_array = np.array(temp.MV / temp.MV.sum())
             #calculate return for each company in the portfolio
             temp_return =  ((temp.Close_out - temp.Close) / temp.Close + 1 - transaction_cost)
